@@ -1,24 +1,22 @@
 package co.com.ias.practica_reactive_web.domain.model.gateways;
 
 import co.com.ias.practica_reactive_web.domain.model.student.Student;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface IStudentRepository {
 
-    Boolean saveStudent(Student student);
+    Mono<Boolean> saveStudent(Student student);
 
-    Boolean updateStudent(Student student);
+    Mono<Boolean> updateStudent(Student student);
 
-    Boolean saveStudentsInCourse(List<Student> students);
+    Mono<Student> findStudentById(Long id);
 
-    Boolean deleteStudentInCourse(Long id);
+    Mono<List<Student>> findAllStudents();
 
-    Student findStudentById(Long id);
-
-    List<Student> findAllStudents();
-
-    List<Student> findAllStudentsByCourseId(Long id);
+    Mono<List<Student>> findAllStudentsByCourseId(Long id);
 
 
 }
